@@ -1,0 +1,26 @@
+@startuml
+
+entity users as "User\nユーザ" {
+  + id : bigint [PK]
+  --
+  * email : varchar(255) not null
+  created_at : datetime
+  updated_at : datetime
+  --
+  index_users_on_email (email)
+}
+
+entity user_database_authentications as "UserDatabaseAuthentication\nユーザデータベース認証" {
+  + id : bigint [PK]
+  --
+  # user_id : bigint [FK]
+  password_digest : varchar(255) not null
+  created_at : datetime
+  updated_at : datetime
+  --
+  index_user_database_authentications_on_user_id (user_id)
+}
+
+users ||--o| user_database_authentications
+
+@enduml
