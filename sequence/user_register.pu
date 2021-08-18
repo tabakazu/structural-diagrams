@@ -1,0 +1,15 @@
+	
+@startuml
+User -> System: regiter email
+System -> System: verify email
+User <- System: send email with verification URL
+User -> System: access to verification URL
+System -> System: verify access with URL token
+User <- System: render registration page
+User -> System: register password
+System -> System: verify password
+System -> System: save email, digested password
+User -> System: send email, password
+System -> System: verify email, password
+User <- System: render page after login
+@enduml
